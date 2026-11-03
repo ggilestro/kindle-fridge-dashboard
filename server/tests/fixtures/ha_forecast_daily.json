@@ -1,0 +1,51 @@
+{
+ "changed_states": [],
+ "service_response": {
+  "weather.forecast_home": {
+   "forecast": [
+    {
+     "datetime": "2026-11-01T12:00:00+00:00",
+     "condition": "rainy",
+     "temperature": 12.1,
+     "templow": 6.8,
+     "precipitation": 5.6
+    },
+    {
+     "datetime": "2026-11-02T12:00:00+00:00",
+     "condition": "partlycloudy",
+     "temperature": 11.0,
+     "templow": 5.1,
+     "precipitation": 0.2
+    },
+    {
+     "datetime": "2026-11-03T12:00:00+00:00",
+     "condition": "sunny",
+     "temperature": 13.4,
+     "templow": 4.0,
+     "precipitation": 0
+    },
+    {
+     "datetime": "2026-11-04T12:00:00+00:00",
+     "condition": "cloudy",
+     "temperature": 9.8,
+     "templow": 6.2,
+     "precipitation": 1.0
+    },
+    {
+     "datetime": "2026-11-05T12:00:00+00:00",
+     "condition": "rainy",
+     "temperature": 8.2,
+     "templow": 3.9,
+     "precipitation": 7.4
+    },
+    {
+     "datetime": "2026-11-06T12:00:00+00:00",
+     "condition": "snowy-rainy",
+     "temperature": 4.5,
+     "templow": 0.2,
+     "precipitation": 3.3
+    }
+   ]
+  }
+ }
+}

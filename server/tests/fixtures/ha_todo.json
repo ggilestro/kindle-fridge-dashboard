@@ -1,0 +1,44 @@
+{
+ "changed_states": [],
+ "service_response": {
+  "todo.shopping_list": {
+   "items": [
+    {
+     "summary": "Milk",
+     "uid": "0",
+     "status": "needs_action"
+    },
+    {
+     "summary": "Eggs",
+     "uid": "1",
+     "status": "needs_action"
+    },
+    {
+     "summary": "Sourdough bread",
+     "uid": "2",
+     "status": "needs_action"
+    },
+    {
+     "summary": "Bananas",
+     "uid": "3",
+     "status": "completed"
+    },
+    {
+     "summary": "Washing-up liquid",
+     "uid": "4",
+     "status": "needs_action"
+    },
+    {
+     "summary": "Parmigiano Reggiano",
+     "uid": "5",
+     "status": "needs_action"
+    },
+    {
+     "summary": "Coffee beans",
+     "uid": "6",
+     "status": "needs_action"
+    }
+   ]
+  }
+ }
+}

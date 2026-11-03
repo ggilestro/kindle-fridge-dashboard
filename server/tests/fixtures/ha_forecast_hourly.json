@@ -1,0 +1,201 @@
+{
+ "changed_states": [],
+ "service_response": {
+  "weather.forecast_home": {
+   "forecast": [
+    {
+     "datetime": "2026-11-01T17:00:00+00:00",
+     "condition": "cloudy",
+     "temperature": 10.2,
+     "precipitation": 0,
+     "humidity": 84,
+     "wind_speed": 9.0
+    },
+    {
+     "datetime": "2026-11-01T18:00:00+00:00",
+     "condition": "cloudy",
+     "temperature": 9.9,
+     "precipitation": 0,
+     "humidity": 84,
+     "wind_speed": 9.0
+    },
+    {
+     "datetime": "2026-11-01T19:00:00+00:00",
+     "condition": "rainy",
+     "temperature": 9.6,
+     "precipitation": 0.4,
+     "humidity": 84,
+     "wind_speed": 9.0
+    },
+    {
+     "datetime": "2026-11-01T20:00:00+00:00",
+     "condition": "rainy",
+     "temperature": 9.3,
+     "precipitation": 1.2,
+     "humidity": 84,
+     "wind_speed": 9.0
+    },
+    {
+     "datetime": "2026-11-01T21:00:00+00:00",
+     "condition": "pouring",
+     "temperature": 9.0,
+     "precipitation": 3.1,
+     "humidity": 84,
+     "wind_speed": 9.0
+    },
+    {
+     "datetime": "2026-11-01T22:00:00+00:00",
+     "condition": "rainy",
+     "temperature": 8.7,
+     "precipitation": 0.8,
+     "humidity": 84,
+     "wind_speed": 9.0
+    },
+    {
+     "datetime": "2026-11-01T23:00:00+00:00",
+     "condition": "cloudy",
+     "temperature": 8.4,
+     "precipitation": 0,
+     "humidity": 84,
+     "wind_speed": 9.0
+    },
+    {
+     "datetime": "2026-11-02T00:00:00+00:00",
+     "condition": "partlycloudy",
+     "temperature": 8.1,
+     "precipitation": 0,
+     "humidity": 84,
+     "wind_speed": 9.0
+    },
+    {
+     "datetime": "2026-11-02T01:00:00+00:00",
+     "condition": "clear-night",
+     "temperature": 7.8,
+     "precipitation": 0,
+     "humidity": 84,
+     "wind_speed": 9.0
+    },
+    {
+     "datetime": "2026-11-02T02:00:00+00:00",
+     "condition": "clear-night",
+     "temperature": 7.5,
+     "precipitation": 0,
+     "humidity": 84,
+     "wind_speed": 9.0
+    },
+    {
+     "datetime": "2026-11-02T03:00:00+00:00",
+     "condition": "clear-night",
+     "temperature": 7.2,
+     "precipitation": 0,
+     "humidity": 84,
+     "wind_speed": 9.0
+    },
+    {
+     "datetime": "2026-11-02T04:00:00+00:00",
+     "condition": "partlycloudy",
+     "temperature": 6.9,
+     "precipitation": 0,
+     "humidity": 84,
+     "wind_speed": 9.0
+    },
+    {
+     "datetime": "2026-11-02T05:00:00+00:00",
+     "condition": "partlycloudy",
+     "temperature": 6.6,
+     "precipitation": 0,
+     "humidity": 84,
+     "wind_speed": 9.0
+    },
+    {
+     "datetime": "2026-11-02T06:00:00+00:00",
+     "condition": "sunny",
+     "temperature": 6.3,
+     "precipitation": 0,
+     "humidity": 84,
+     "wind_speed": 9.0
+    },
+    {
+     "datetime": "2026-11-02T07:00:00+00:00",
+     "condition": "sunny",
+     "temperature": 6.0,
+     "precipitation": 0,
+     "humidity": 84,
+     "wind_speed": 9.0
+    },
+    {
+     "datetime": "2026-11-02T08:00:00+00:00",
+     "condition": "partlycloudy",
+     "temperature": 13.2,
+     "precipitation": 0,
+     "humidity": 84,
+     "wind_speed": 9.0
+    },
+    {
+     "datetime": "2026-11-02T09:00:00+00:00",
+     "condition": "cloudy",
+     "temperature": 13.4,
+     "precipitation": 0,
+     "humidity": 84,
+     "wind_speed": 9.0
+    },
+    {
+     "datetime": "2026-11-02T10:00:00+00:00",
+     "condition": "cloudy",
+     "temperature": 13.6,
+     "precipitation": 0,
+     "humidity": 84,
+     "wind_speed": 9.0
+    },
+    {
+     "datetime": "2026-11-02T11:00:00+00:00",
+     "condition": "rainy",
+     "temperature": 13.8,
+     "precipitation": 0.3,
+     "humidity": 84,
+     "wind_speed": 9.0
+    },
+    {
+     "datetime": "2026-11-02T12:00:00+00:00",
+     "condition": "rainy",
+     "temperature": 14.0,
+     "precipitation": 0.6,
+     "humidity": 84,
+     "wind_speed": 9.0
+    },
+    {
+     "datetime": "2026-11-02T13:00:00+00:00",
+     "condition": "cloudy",
+     "temperature": 14.2,
+     "precipitation": 0,
+     "humidity": 84,
+     "wind_speed": 9.0
+    },
+    {
+     "datetime": "2026-11-02T14:00:00+00:00",
+     "condition": "cloudy",
+     "temperature": 14.4,
+     "precipitation": 0,
+     "humidity": 84,
+     "wind_speed": 9.0
+    },
+    {
+     "datetime": "2026-11-02T15:00:00+00:00",
+     "condition": "partlycloudy",
+     "temperature": 14.6,
+     "precipitation": 0,
+     "humidity": 84,
+     "wind_speed": 9.0
+    },
+    {
+     "datetime": "2026-11-02T16:00:00+00:00",
+     "condition": "clear-night",
+     "temperature": 14.8,
+     "precipitation": 0,
+     "humidity": 84,
+     "wind_speed": 9.0
+    }
+   ]
+  }
+ }
+}

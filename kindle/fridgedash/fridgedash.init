@@ -1,0 +1,13 @@
+#!/bin/sh
+# fridgedash boot hook, installed as /etc/init.d/fridgedash (+ /etc/rc5.d/S99fridgedash)
+# by /mnt/us/fridgedash/autostart.sh. It does nothing unless the flag file below exists.
+FLAG=/mnt/us/fridgedash/AUTOSTART
+
+case "$1" in
+start)
+    # Reason: the framework needs ~2.5 min to finish starting; stop it only afterwards.
+    /sbin/start-stop-daemon -S -b -x /bin/sh -- -c \
+        "sleep 180; [ -f $FLAG ] && sh /mnt/us/fridgedash/start.sh"
+    ;;
+esac
+exit 0

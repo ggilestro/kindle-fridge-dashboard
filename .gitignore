@@ -1,0 +1,14 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Secrets and runtime data
+.env
+server/data/
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store

@@ -1,0 +1,45 @@
+{
+	"items": [
+	{
+		"name": "Fridge dashboard",
+		"priority": 0,
+		"items": [
+		{
+			"name": "Start dashboard (hourly, low power)",
+			"priority": 1,
+			"action": "/mnt/us/fridgedash/start.sh",
+			"exitmenu": true,
+			"status": false
+		},
+		{
+			"name": "Test: show dashboard once",
+			"priority": 2,
+			"action": "/mnt/us/fridgedash/start.sh",
+			"params": "once",
+			"exitmenu": true,
+			"status": false
+		},
+		{
+			"name": "Start automatically at boot",
+			"priority": 3,
+			"if": "\"/mnt/us/fridgedash/AUTOSTART\" -f!",
+			"action": "/mnt/us/fridgedash/autostart.sh",
+			"params": "on",
+			"exitmenu": false,
+			"refresh": true,
+			"status": false
+		},
+		{
+			"name": "Don't start at boot",
+			"priority": 3,
+			"if": "\"/mnt/us/fridgedash/AUTOSTART\" -f",
+			"action": "/mnt/us/fridgedash/autostart.sh",
+			"params": "off",
+			"exitmenu": false,
+			"refresh": true,
+			"status": false
+		}
+		]
+	}
+	]
+}

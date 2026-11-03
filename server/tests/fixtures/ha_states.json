@@ -1,0 +1,39 @@
+{
+ "weather.forecast_home": {
+  "entity_id": "weather.forecast_home",
+  "state": "cloudy",
+  "attributes": {
+   "temperature": 10.2,
+   "humidity": 84,
+   "friendly_name": "Forecast Home"
+  }
+ },
+ "climate.heater": {
+  "entity_id": "climate.heater",
+  "state": "off",
+  "attributes": {
+   "current_temperature": 20.0,
+   "temperature": 20.0
+  }
+ },
+ "sensor.e_niro_e_niro_e_niro_ev_battery_level": {
+  "entity_id": "sensor.e_niro_e_niro_e_niro_ev_battery_level",
+  "state": "82",
+  "attributes": {}
+ },
+ "sensor.e_niro_e_niro_e_niro_ev_range": {
+  "entity_id": "sensor.e_niro_e_niro_e_niro_ev_range",
+  "state": "unavailable",
+  "attributes": {}
+ },
+ "vacuum.robovac": {
+  "entity_id": "vacuum.robovac",
+  "state": "docked",
+  "attributes": {}
+ },
+ "sensor.robovac_battery": {
+  "entity_id": "sensor.robovac_battery",
+  "state": "100",
+  "attributes": {}
+ }
+}

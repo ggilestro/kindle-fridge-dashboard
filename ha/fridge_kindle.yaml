@@ -1,0 +1,52 @@
+# Fridge Kindle dashboard: monitoring package (see docs/home-assistant.md).
+# Install as <ha config>/packages/fridge_kindle.yaml, after replacing 192.168.68.124:8090
+# (twice below) with your fridgedash server.
+#
+# The Kindle sleeps between hourly check-ins, so "online" means it has not missed the
+# wake it announced (+10 min grace), computed by the fridgedash server.
+rest:
+  - resource: http://192.168.68.124:8090/status
+    scan_interval: 60
+    sensor:
+      - name: Fridge Kindle battery
+        unique_id: fridge_kindle_battery
+        value_template: "{{ value_json.battery }}"
+        availability: "{{ value_json.battery is not none }}"
+        device_class: battery
+        unit_of_measurement: "%"
+        state_class: measurement
+      - name: Fridge Kindle last seen
+        unique_id: fridge_kindle_last_seen
+        value_template: "{{ value_json.last_seen }}"
+        availability: "{{ value_json.last_seen is not none }}"
+        device_class: timestamp
+      - name: Fridge Kindle next check-in
+        unique_id: fridge_kindle_next_check_in
+        value_template: "{{ value_json.next_expected }}"
+        availability: "{{ value_json.next_expected is not none }}"
+        device_class: timestamp
+      - name: Fridge dashboard rendered
+        unique_id: fridge_dashboard_rendered
+        value_template: "{{ value_json.rendered_at }}"
+        availability: "{{ value_json.rendered_at is not none }}"
+        device_class: timestamp
+    binary_sensor:
+      - name: Fridge Kindle online
+        unique_id: fridge_kindle_online
+        value_template: "{{ value_json.online }}"
+        device_class: connectivity
+      - name: Fridge Kindle charging
+        unique_id: fridge_kindle_charging
+        value_template: "{{ value_json.charging }}"
+        availability: "{{ value_json.charging is not none }}"
+        device_class: battery_charging
+
+template:
+  - image:
+      - name: Fridge dashboard
+        unique_id: fridge_dashboard_image
+        # Reason: the image entity only re-fetches when its URL changes, so tie the URL
+        # to the server's render time (re-rendered every 10 minutes).
+        url: >-
+          http://192.168.68.124:8090/dash.png?v={{
+          as_timestamp(states('sensor.fridge_dashboard_rendered'), 0) | int }}

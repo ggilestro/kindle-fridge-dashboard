@@ -1,0 +1,18 @@
+services:
+  fridgedash:
+    build: .
+    image: fridgedash:local
+    container_name: fridgedash
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      # Reason: also sets the container clock's zone; overrides TZ from env_file, so
+      # take it from .env when present.
+      TZ: ${TZ:-Europe/London}
+    ports:
+      - "8090:8090"
+    volumes:
+      - ./data:/data
+    labels:
+      # Locally built image: stop watchtower from trying to pull it.
+      com.centurylinklabs.watchtower.enable: "false"

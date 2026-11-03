@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Fridge dashboard</title>
+<style>
+{{ fonts }}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: {{ width }}px; background: #fff; color: #000; }
+body { font-family: "AH", sans-serif; font-size: 20px; line-height: 1.2; }
+svg { fill: currentColor; display: block; }
+.page { width: {{ width }}px; height: {{ height }}px; overflow: hidden;
+  display: flex; flex-direction: column; padding: 14px 20px 6px; }
+
+/* Header: date left, current weather right */
+.hdr { display: flex; justify-content: space-between; align-items: center;
+  padding-bottom: 8px; border-bottom: 4px solid #000; }
+.wd { font-size: 22px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
+.dt { font-size: 44px; font-weight: 700; line-height: 1; }
+.now { display: flex; align-items: center; gap: 6px; }
+.now svg { width: 58px; height: 58px; }
+.now-t { font-size: 50px; font-weight: 700; line-height: .9; }
+.now-s { font-size: 16px; margin-top: 3px; white-space: nowrap; }
+
+/* One compact forecast row: next hours | next days */
+.fc { display: flex; align-items: stretch; padding: 5px 0 4px; border-bottom: 2px solid #000; }
+.slot { flex: 1; text-align: center; }
+.slot .l { font-size: 14px; font-weight: 700; }
+.slot svg { width: 30px; height: 30px; margin: 1px auto; }
+.slot .v { font-size: 16px; font-weight: 700; }
+.slot .lo { font-weight: 400; color: #333; }
+.sep { width: 2px; background: #000; margin: 4px 6px; }
+
+/* Bins */
+.bins { display: flex; align-items: center; gap: 8px; margin-top: 7px; padding: 5px 9px;
+  border: 2px solid #000; border-radius: 4px; }
+.bins.soon { background: #000; color: #fff; }
+.bins > svg { width: 28px; height: 28px; flex: none; }
+.bins .b1 { font-size: 18px; font-weight: 700; }
+.bins .b2 { font-size: 14px; margin-top: 1px; }
+.bins .b1, .bins .b2 { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.bins div { min-width: 0; }
+
+/* Main: agenda + shopping */
+.main { flex: 1; display: flex; gap: 16px; padding-top: 8px; min-height: 0; }
+.panel { display: flex; flex-direction: column; min-width: 0; overflow: hidden; }
+.agenda { flex: 1 1 0; }
+.shopping { width: 250px; border-left: 2px solid #000; padding-left: 14px; }
+h2 { display: flex; align-items: center; gap: 6px; font-size: 17px; font-weight: 700;
+  letter-spacing: .08em; text-transform: uppercase; margin-bottom: 3px; }
+h2 svg { width: 21px; height: 21px; }
+.day { font-size: 17px; font-weight: 700; margin-top: 4px; padding: 0 6px;
+  background: #000; color: #fff; align-self: flex-start; border-radius: 3px; }
+.ev { display: flex; gap: 8px; font-size: 19px; height: 26px; align-items: baseline; }
+.ev .time { width: 58px; flex: none; font-size: 16px; font-weight: 700; }
+.ev .title, .item span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.item { display: flex; align-items: center; gap: 8px; font-size: 19px; height: 26px; }
+.box { width: 15px; height: 15px; border: 2px solid #000; border-radius: 2px; flex: none; }
+.more, .empty { font-size: 16px; color: #333; margin-top: 4px; display: flex; align-items: center; gap: 2px; }
+.more svg { width: 20px; height: 20px; }
+
+/* Sensor strip */
+.sensors { display: flex; justify-content: space-between; border-top: 2px solid #000;
+  padding: 6px 0 4px; }
+.sensor { display: flex; align-items: center; gap: 6px; font-size: 19px; font-weight: 700; }
+.sensor svg { width: 28px; height: 28px; }
+.sensor small { font-size: 14px; font-weight: 400; color: #333; display: block; }
+
+/* Footer */
+.footer { display: flex; justify-content: space-between; align-items: center; font-size: 14px;
+  color: #333; border-top: 1px solid #000; padding-top: 3px; }
+.footer span { display: flex; align-items: center; gap: 3px; }
+.footer svg { width: 16px; height: 16px; }
+.charge { background: #000; color: #fff; font-weight: 700; font-size: 17px;
+  display: flex; align-items: center; justify-content: center; gap: 8px; padding: 4px; }
+.charge svg { width: 22px; height: 22px; }
+
+/* Shopping pages */
+.shdr { display: flex; justify-content: space-between; align-items: flex-end;
+  padding-bottom: 8px; border-bottom: 4px solid #000; }
+.shdr h1 { display: flex; align-items: center; gap: 10px; font-size: 32px; font-weight: 700; }
+.shdr h1 svg { width: 36px; height: 36px; }
+.shdr .meta { font-size: 17px; }
+.cols { flex: 1; display: flex; gap: 18px; padding-top: 10px; min-height: 0; }
+.col { flex: 1 1 0; min-width: 0; }
+.col + .col { border-left: 2px solid #000; padding-left: 16px; }
+.col .item { font-size: 22px; height: 31px; gap: 10px; }
+.col .box { width: 18px; height: 18px; }
+.big-empty { font-size: 26px; margin-top: 30px; color: #333; }
+</style>
+</head>
+<body>
+
+{# ---------------------------------------------------------------- page 1 #}
+<div class="page main-page">
+  <section class="hdr">
+    <div>
+      <div class="wd">{{ weekday }}</div>
+      <div class="dt">{{ date }}</div>
+    </div>
+    <div class="now">
+      {% if weather and weather.condition %}{{ icon(condition_icon(weather.condition, now)) }}{% endif %}
+      <div>
+        <div class="now-t">{{ weather.temperature | deg if weather else "—" }}</div>
+        <div class="now-s">{{ condition_label(weather.condition) if weather else "No weather" }}{% if today %} · <b>{{ today.temperature | deg }}</b>/{{ today.templow | deg }}{% endif %}</div>
+      </div>
+    </div>
+  </section>
+
+  {% if hourly or daily %}
+  <section class="fc">
+    {% for h in hourly %}
+    <div class="slot">
+      <div class="l">{{ "%02d:00" % h.when.hour }}</div>
+      {{ icon(condition_icon(h.condition, h.when)) }}
+      <div class="v">{{ h.temperature | deg }}</div>
+    </div>
+    {% endfor %}
+    {% if hourly and daily %}<div class="sep"></div>{% endif %}
+    {% for d in daily %}
+    <div class="slot">
+      <div class="l">{{ d.when.strftime("%a") }}</div>
+      {{ icon(condition_icon(d.condition)) }}
+      <div class="v">{{ d.temperature | deg }} <span class="lo">{{ d.templow | deg }}</span></div>
+    </div>
+    {% endfor %}
+  </section>
+  {% endif %}
+
+  {% if bins %}
+  <section class="bins{% if bins[0].soon %} soon{% endif %}">
+    {{ icon("trash-can-outline") }}
+    <div>
+      <div class="b1">{{ bins[0].label }}: {{ bins[0].names | join(" · ") }}</div>
+      {% if bins | length > 1 %}<div class="b2">Then {{ bins[1].label }}: {{ bins[1].names | join(" · ") }}</div>{% endif %}
+    </div>
+  </section>
+  {% elif not bins_ok %}
+  <section class="bins">{{ icon("trash-can-outline") }}<div class="b2">Bin collections unavailable</div></section>
+  {% endif %}
+
+  <section class="main">
+    <div class="panel agenda">
+      <h2>{{ icon("calendar-blank-outline") }} Agenda</h2>
+      {% if not calendar_ok %}
+        <div class="empty">{{ "Calendar unavailable" if calendar_configured else "No calendar set up" }}</div>
+      {% elif not agenda %}
+        <div class="empty">Nothing planned</div>
+      {% endif %}
+      {% for g in agenda %}
+        <div class="day">{{ g.label }}</div>
+        {% for e in g.events %}
+        <div class="ev"><span class="time">{{ e.time }}</span><span class="title">{{ e.title }}</span></div>
+        {% endfor %}
+      {% endfor %}
+      {% if agenda_more %}<div class="more">+{{ agenda_more }} more</div>{% endif %}
+    </div>
+    <div class="panel shopping">
+      <h2>{{ icon("cart-outline") }} Shopping{% if shopping_total %} ({{ shopping_total }}){% endif %}</h2>
+      {% if not shopping_ok %}
+        <div class="empty">List unavailable</div>
+      {% elif not shopping %}
+        <div class="empty">Nothing to buy</div>
+      {% endif %}
+      {% for item in shopping %}
+        <div class="item"><span class="box"></span><span>{{ item }}</span></div>
+      {% endfor %}
+      {% if shopping_more %}<div class="more">+{{ shopping_more }} more on the next page {{ icon("chevron-right") }}</div>{% endif %}
+    </div>
+  </section>
+
+  <section class="sensors">
+    <div class="sensor">{{ icon("thermometer") }}<div>{{ s.room_temp | deg }}<small>Inside</small></div></div>
+    <div class="sensor">{{ icon("car-electric") }}<div>{{ s.ev_battery | num("%") }}{% if s.ev_range is not none %} · {{ s.ev_range | num(" km") }}{% endif %}<small>e-Niro</small></div></div>
+    <div class="sensor">{{ icon("robot-vacuum") }}<div>{{ (s.vacuum_state or "—") | capitalize }}{% if s.vacuum_battery is not none %} · {{ s.vacuum_battery | num("%") }}{% endif %}<small>RoboVac</small></div></div>
+  </section>
+
+  {% if battery_low %}
+  <div class="charge">{{ icon("battery-alert-variant-outline") }} Kindle battery {{ battery }}% — please charge</div>
+  {% else %}
+  <div class="footer">
+    <span>Updated {{ now.strftime("%H:%M") }}{% if errors %} · ⚠ {{ errors | join(", ") }}{% endif %}</span>
+    <span>{{ icon("power") }} then {{ icon("chevron-right") }} shopping list · 1/{{ page_count }}{% if battery is not none %} · Kindle {{ battery }}%{% endif %}</span>
+  </div>
+  {% endif %}
+</div>
+
+{# ------------------------------------------------------ shopping pages #}
+{% for cols in shop_pages %}
+<div class="page shop-page">
+  <section class="shdr">
+    <h1>{{ icon("cart-outline") }} Shopping list</h1>
+    <div class="meta">{{ shopping_total }} item{{ "" if shopping_total == 1 else "s" }}{% if shop_pages | length > 1 %} · part {{ loop.index }} of {{ shop_pages | length }}{% endif %}</div>
+  </section>
+  <section class="cols">
+    {% if not shopping_ok %}
+      <div class="big-empty">Shopping list unavailable</div>
+    {% elif not shopping_total %}
+      <div class="big-empty">Nothing to buy</div>
+    {% else %}
+      {% for col in cols %}
+      <div class="col">
+        {% for item in col %}
+        <div class="item"><span class="box"></span><span>{{ item }}</span></div>
+        {% endfor %}
+      </div>
+      {% endfor %}
+    {% endif %}
+  </section>
+  <div class="footer">
+    <span>Updated {{ now.strftime("%H:%M") }} · {{ icon("chevron-left") }} back · HOME: Kindle menu</span>
+    <span>{{ loop.index + 1 }}/{{ page_count }}</span>
+  </div>
+</div>
+{% endfor %}
+
+</body>
+</html>

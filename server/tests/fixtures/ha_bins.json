@@ -1,0 +1,71 @@
+[
+ {
+  "entity_id": "sensor.bins_food_waste_collection",
+  "state": "Tomorrow",
+  "attributes": {
+   "colour": "#8d6e63",
+   "next_collection": "02/11/2026",
+   "days": 1,
+   "device_class": "bin_collection_schedule",
+   "friendly_name": "Bins Food waste collection"
+  }
+ },
+ {
+  "entity_id": "sensor.bins_mixed_recycling_collection",
+  "state": "Tomorrow",
+  "attributes": {
+   "next_collection": "02/11/2026",
+   "days": 1,
+   "device_class": "bin_collection_schedule",
+   "friendly_name": "Bins Mixed recycling collection"
+  }
+ },
+ {
+  "entity_id": "sensor.bins_paper_and_card_collection",
+  "state": "In 8 days",
+  "attributes": {
+   "next_collection": "09/11/2026",
+   "days": 8,
+   "device_class": "bin_collection_schedule",
+   "friendly_name": "Bins Paper and card collection"
+  }
+ },
+ {
+  "entity_id": "sensor.bins_non_recyclable_refuse_collection",
+  "state": "In 8 days",
+  "attributes": {
+   "next_collection": "09/11/2026",
+   "days": 8,
+   "device_class": "bin_collection_schedule",
+   "friendly_name": "Bins Non-recyclable Refuse collection"
+  }
+ },
+ {
+  "entity_id": "sensor.bins_garden_waste_collection",
+  "state": "In 8 days",
+  "attributes": {
+   "next_collection": "09/11/2026",
+   "days": 8,
+   "device_class": "bin_collection_schedule",
+   "friendly_name": "Bins Garden Waste collection"
+  }
+ },
+ {
+  "entity_id": "sensor.mixed_recycling",
+  "state": "Tomorrow",
+  "attributes": {
+   "next_date": "2 November",
+   "date": "2026-11-02",
+   "days": 1,
+   "friendly_name": "Mixed recycling"
+  }
+ },
+ {
+  "entity_id": "sensor.unrelated",
+  "state": "12",
+  "attributes": {
+   "device_class": "temperature",
+   "friendly_name": "Unrelated"
+  }
+ }
+]
